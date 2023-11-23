@@ -1,3 +1,6 @@
+# Java Questions
+
+<p>
 1. Write a program to convert temperature from fahrenheit to centigrade.
 2. Write a program to find out second lowest number from three given numbers.
 3. Write a program to calculate factorial value of a given number.
@@ -18,3 +21,4 @@
 18. Write a program to find out a string is palindrome or not.
 19. Write a program to find out number of occurence of vowel and consonents in a string.
 20. Write a program to abrivate the name.
+</p>

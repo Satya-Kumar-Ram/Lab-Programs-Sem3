@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class Q3{
     int factorial(int n){
         if(n==0){

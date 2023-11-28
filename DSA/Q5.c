@@ -50,7 +50,7 @@ enteragain:
         printf("Enter the data: ");
         scanf("%d", &newnode->data);
         ptr = head;
-        for (i = 2; i < location; i++)
+        for (i = 1; i < location - 1; i++)
         {
             ptr = ptr->link;
         }

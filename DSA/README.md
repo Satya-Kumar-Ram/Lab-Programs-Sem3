@@ -14,4 +14,5 @@
 11. Write a program to insert node at the beginnning of Doubly Linked List.<br>
 12. Write a program to insert node at the end of Doubly Linked List.<br>
 13.Write a program to insert a Node at certain position of Doubly Linked List.<br>
+14. Write a program to delete first node of Doubly Linked List.<br>
 </p>

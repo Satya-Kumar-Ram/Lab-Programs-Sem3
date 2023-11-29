@@ -3,56 +3,58 @@
 struct node
 {
     int data;
-    struct node *link;
+    struct node *next;
 };
-void createList(struct node *ptr, int size)
+struct node *head, *tail = NULL;
+void addNode(int data)
 {
-    int i;
-    for (i = 1; i < size; i++)
-    {
-        struct node *temp = malloc(sizeof(struct node));
-        scanf("%d", &temp->data);
-        temp->link = NULL;
+    struct node *newnode = malloc(sizeof(struct node));
+    newnode->data = data;
+    newnode->next = NULL;
 
-        ptr->link = temp;
-        ptr = ptr->link;
+    if (head == NULL)
+    {
+        head = newnode;
+        tail = newnode;
+    }
+    else
+    {
+        tail->next = newnode;
+        tail = newnode;
     }
 }
-void print_Data(struct node *head)
+void print_Data()
+{
+    struct node *current = head;
+    if (head == NULL)
+        printf("List is empty!");
+    else
+    {
+        printf("\nElements are: ");
+        while (current != NULL)
+        {
+            printf(" %d", current->data);
+            current = current->next;
+        }
+    }
+}
+void del_end()
 {
     struct node *ptr = head;
-    if (ptr->link == NULL)
-        printf("Elements are: ");
-    while (ptr != NULL)
+    while (ptr->next->next != NULL)
     {
-        printf(" %d", ptr->data);
-        ptr = ptr->link;
+        ptr = ptr->next;
     }
-}
-void del_Last(struct node *head, struct node *ptr)
-{
-    ptr = head;
-    while (ptr->link->link != NULL)
-    {
-        ptr = ptr->link;
-    }
-    ptr->link = NULL;
+    ptr->next = NULL;
 }
 void main()
 {
-    int size;
-    printf("Enter the size of the list: ");
-    scanf("%d", &size);
-    struct node *head = malloc(sizeof(struct node));
-    printf("Enter your elements:\n");
-    scanf("%d", &head->data);
-    head->link = NULL;
+    addNode(1);
+    addNode(2);
+    addNode(3);
+    addNode(4);
+    print_Data();
 
-    struct node *ptr = head;
-    createList(ptr, size);
-    print_Data(head);
-
-    del_Last(head, ptr);
-    printf("\nAfter deletion ");
-    print_Data(head);
+    del_end();
+    print_Data();
 }

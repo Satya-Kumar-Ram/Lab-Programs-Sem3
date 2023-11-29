@@ -1,77 +1,66 @@
 #include <stdio.h>
 #include <stdlib.h>
-struct Node
+struct node
 {
     int data;
-    struct Node *link;
+    struct node *next;
 };
-void createList(struct Node *ptr, int size)
+struct node *head, *tail = NULL;
+void addNode(int data)
 {
-    int i;
-    for (i = 1; i < size; i++)
-    {
-        struct Node *temp = malloc(sizeof(struct Node));
-        scanf("%d", &temp->data);
-        temp->link = NULL;
+    struct node *newnode = malloc(sizeof(struct node));
+    newnode->data = data;
+    newnode->next = NULL;
 
-        ptr->link = temp;
-        ptr = ptr->link;
-    }
-}
-void print_Data(struct Node *ptr)
-{
-    printf("Elements are: ");
-    while (ptr != NULL)
+    if (head == NULL)
     {
-        printf(" %d", ptr->data);
-        ptr = ptr->link;
-    }
-}
-void del_At_Loc(struct node *head)
-{
-    int count = 0, location, i;
-    struct Node *ptr = head, *q;
-    while (ptr != NULL)
-    {
-        ptr = ptr->link;
-        count++;
-    }
-enteragain:
-    printf("\nEnter a location between 1 to %d: ", count);
-    scanf("%d", &location);
-    if (location <= 1 || location >= count)
-    {
-        printf("Invalid location, Re-enter location\n");
-        goto enteragain;
+        head = newnode;
+        tail = newnode;
     }
     else
     {
-        ptr = head;
-        for (i = 2; i < location; i++)
-        {
-            ptr = ptr->link;
-        }
-        // printf("Ptr positon: %d", ptr->data);
-        q = ptr->link;
-        ptr->link = q->link;
-        q->link = NULL;
-        free(q);
+        tail->next = newnode;
+        tail = newnode;
     }
+}
+void print_Data()
+{
+    struct node *current = head;
+    if (head == NULL)
+        printf("List is empty!");
+    else
+    {
+        printf("\nElements are: ");
+        while (current != NULL)
+        {
+            printf(" %d", current->data);
+            current = current->next;
+        }
+    }
+}
+void del_loc()
+{
+    struct node *ptr = head, *q;
+    int i, loc;
+    printf("\nEnter the location: ");
+    scanf("%d", &loc);
+    for (i = 0; i < loc; i++)
+    {
+        ptr = ptr->next;
+    }
+    q = ptr->next;
+    ptr->next = q->next;
+    q->next = NULL;
+    free(q);
 }
 void main()
 {
-    int size;
-    printf("Enter the size of the list: ");
-    scanf("%d", &size);
-    struct Node *head = malloc(sizeof(struct Node));
-    printf("Enter the elements: ");
-    scanf("%d", &head->data);
-    head->link = NULL;
-    struct Node *ptr = head;
+    addNode(1);
+    addNode(2);
+    addNode(3);
+    addNode(4);
+    print_Data();
 
-    createList(ptr, size);
-    print_Data(head);
-
-    del_At_Loc(head);
-    print_Data(head);
+    del_loc();
+    print_Data();
 }

@@ -1,59 +1,64 @@
 #include <stdio.h>
 #include <stdlib.h>
-struct Node
+struct node
 {
     int data;
-    struct Node *link;
+    struct node *next;
 };
-void createList(struct Node *ptr, int size)
+struct node *head, *tail = NULL;
+void addNode(int data)
 {
-    int i;
-    for (i = 1; i < size; i++)
-    {
-        struct Node *temp = malloc(sizeof(struct Node));
-        scanf("%d", &temp->data);
-        temp->link = NULL;
+    struct node *newnode = malloc(sizeof(struct node));
+    newnode->data = data;
+    newnode->next = NULL;
 
-        ptr->link = temp;
-        ptr = ptr->link;
+    if (head == NULL)
+    {
+        head = newnode;
+        tail = newnode;
+    }
+    else
+    {
+        tail->next = newnode;
+        tail = newnode;
     }
 }
-void print_Data(struct Node *ptr)
+void print_Data()
 {
-    printf("Elements are: ");
-    while (ptr != NULL)
+    struct node *current = head;
+    if (head == NULL)
+        printf("List is empty!");
+    else
     {
-        printf(" %d", ptr->data);
-        ptr = ptr->link;
+        printf("\nElements are: ");
+        while (current != NULL)
+        {
+            printf(" %d", current->data);
+            current = current->next;
+        }
     }
 }
-void add_End(struct node *head)
+void insert_end(int data)
 {
-    struct Node *ptr = head;
-    struct Node *newnode = malloc(sizeof(struct Node));
-    printf("\nEnter the data to be inserted at the end: ");
-    scanf("%d", &newnode->data);
-    newnode->link = NULL;
-    while (ptr->link != NULL)
+    struct node *ptr = head;
+    struct node *newnode = malloc(sizeof(struct node));
+    newnode->data = data;
+    newnode->next = NULL;
+
+    while (ptr->next != NULL)
     {
-        ptr = ptr->link;
+        ptr = ptr->next;
     }
-    ptr->link = newnode;
+    ptr->next = newnode;
 }
 void main()
 {
-    int size;
-    printf("Enter the size of the list: ");
-    scanf("%d", &size);
-    struct Node *head = malloc(sizeof(struct Node));
-    printf("Enter the elements: ");
-    scanf("%d", &head->data);
-    head->link = NULL;
-    struct Node *ptr = head;
+    addNode(1);
+    addNode(2);
+    addNode(3);
+    addNode(4);
+    print_Data();
 
-    createList(ptr, size);
-    print_Data(head);
-
-    add_End(ptr);
-    print_Data(head);
+    insert_end(100);
+    print_Data();
 }

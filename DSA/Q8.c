@@ -40,18 +40,20 @@ void print_Data()
 }
 void del_loc()
 {
-    struct node *ptr = head, *q;
-    int i, loc;
-    printf("\nEnter the location: ");
-    scanf("%d", &loc);
-    for (i = 0; i < loc; i++)
+    int c = 1, pos;
+    printf("\nEnter the position to be deleted: ");
+    scanf("%d", &pos);
+
+    struct node *x, *y;
+    x = head;
+    while (c < pos)
     {
-        ptr = ptr->next;
+        y = x;
+        x = x->next;
+        c++;
     }
-    q = ptr->next;
-    ptr->next = q->next;
-    q->next = NULL;
-    free(q);
+    y->next = x->next;
+    free(x);
 }
 void main()
 {

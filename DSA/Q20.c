@@ -5,44 +5,54 @@ struct node
     int data;
     struct node *next;
 };
-struct node *head, *tail = NULL;
+struct node *head = NULL;
+struct node *tail = NULL;
 void addNode(int data)
 {
     struct node *newnode = malloc(sizeof(struct node));
     newnode->data = data;
-    newnode->next = NULL;
 
     if (head == NULL)
     {
         head = newnode;
         tail = newnode;
+        newnode->next = head;
     }
     else
     {
         tail->next = newnode;
         tail = newnode;
+        tail->next = head;
     }
 }
 void print_Data()
 {
     struct node *current = head;
     if (head == NULL)
+    {
         printf("List is empty!");
+    }
     else
     {
         printf("\nElements are: ");
-        while (current != NULL)
+        do
         {
             printf(" %d", current->data);
             current = current->next;
-        }
+        } while (current != head);
     }
 }
 void insert_beg(int data)
 {
+    struct node *ptr = head, *temp;
     struct node *newnode = malloc(sizeof(struct node));
     newnode->data = data;
     newnode->next = head;
+    while (ptr->next != head)
+    {
+        ptr = ptr->next;
+    }
+    ptr->next = newnode;
     head = newnode;
 }
 void main()

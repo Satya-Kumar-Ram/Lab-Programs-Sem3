@@ -2,6 +2,7 @@
 #include <stdlib.h>
 struct node
 {
+    struct node *prev;
     int data;
     struct node *next;
 };
@@ -10,26 +11,32 @@ void addNode(int data)
 {
     struct node *newnode = malloc(sizeof(struct node));
     newnode->data = data;
-    newnode->next = NULL;
 
     if (head == NULL)
     {
-        head = newnode;
-        tail = newnode;
+        head = tail = newnode;
+        head->prev = NULL;
+        tail->next = NULL;
     }
     else
     {
         tail->next = newnode;
+        newnode->prev = tail;
         tail = newnode;
+        tail->next = NULL;
     }
 }
 void print_Data()
 {
-    struct node *current = head;
+
     if (head == NULL)
+    {
         printf("List is empty!");
+        return;
+    }
     else
     {
+        struct node *current = head;
         printf("\nElements are: ");
         while (current != NULL)
         {
@@ -38,12 +45,22 @@ void print_Data()
         }
     }
 }
-void insert_beg(int data)
+void del_loc()
 {
-    struct node *newnode = malloc(sizeof(struct node));
-    newnode->data = data;
-    newnode->next = head;
-    head = newnode;
+    int c = 1, pos;
+    printf("\nEnter the position to be deleted: ");
+    scanf("%d", &pos);
+
+    struct node *x, *y;
+    x = head;
+    while (c < pos)
+    {
+        y = x;
+        x = x->next;
+        c++;
+    }
+    y->next = x->next;
+    free(x);
 }
 void main()
 {
@@ -53,6 +70,6 @@ void main()
     addNode(4);
     print_Data();
 
-    insert_beg(10);
+    del_loc();
     print_Data();
 }

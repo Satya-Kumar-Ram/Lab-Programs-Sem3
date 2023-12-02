@@ -2,6 +2,7 @@
 #include <stdlib.h>
 struct node
 {
+    struct node *prev;
     int data;
     struct node *next;
 };
@@ -9,25 +10,32 @@ struct node *head, *tail = NULL;
 void addNode(int data)
 {
     struct node *newnode = malloc(sizeof(struct node));
+    newnode->prev = NULL;
     newnode->data = data;
     newnode->next = NULL;
 
     if (head == NULL)
     {
-        head = newnode;
-        tail = newnode;
+        head = tail = newnode;
+        head->prev = NULL;
+        tail->next = NULL;
     }
     else
     {
         tail->next = newnode;
+        newnode->prev = tail;
         tail = newnode;
+        tail->next = NULL;
     }
 }
 void print_Data()
 {
     struct node *current = head;
     if (head == NULL)
+    {
         printf("List is empty!");
+        return;
+    }
     else
     {
         printf("\nElements are: ");
@@ -38,12 +46,22 @@ void print_Data()
         }
     }
 }
-void insert_beg(int data)
+void reverse_List()
 {
-    struct node *newnode = malloc(sizeof(struct node));
-    newnode->data = data;
-    newnode->next = head;
-    head = newnode;
+    struct node *ptr1 = head;
+    struct node *ptr2 = ptr1->next;
+
+    ptr1->next = NULL;
+    ptr1->prev = ptr2;
+
+    while (ptr2 != NULL)
+    {
+        ptr2->prev = ptr2->next;
+        ptr2->next = ptr1;
+        ptr1 = ptr2;
+        ptr2 = ptr2->prev;
+    }
+    head = ptr1;
 }
 void main()
 {
@@ -53,6 +71,6 @@ void main()
     addNode(4);
     print_Data();
 
-    insert_beg(10);
+    reverse_List();
     print_Data();
 }

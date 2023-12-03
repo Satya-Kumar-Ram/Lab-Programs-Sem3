@@ -1,0 +1,74 @@
+1. To print your roll number and name.
+Ans: $echo "Roll: 70"
+     $echo "Satya Kumar Ram"
+2. To print today's date
+Ans: $date
+3: To print your login name.
+Ans: $who am i
+4. To show the persons who are logged in at present.
+Ans: $who
+5. To show the terminal from where you are logged in.
+Ans: $tty
+6. To clear the screen.
+Ans: $clear
+7. To show the calendar of the year 2020.
+Ans: cal 2020
+8. To show the calendar of September of 2020.
+Ans: $cal 09 2020
+9. To show the manual of 'ls' command.
+Ans: $man ls
+10. To show the manual of 'cat' command.
+Ans: $man cat
+11. To display your current working directory.
+Ans: $pwd
+12. To list all the files in my terminal.
+Ans: $ls
+13. To list all the processes running in my terminal.
+Ans: $ps
+14. Create a folder with your name.
+Ans: $mkdir Satya
+15. Within the folder create a file named 'myfile'.
+Ans: $cd Satya 
+     $touch myfile
+16. Write the names of 5 friends in 'myfile'.
+Ans: $cat>myfile 
+    Satya
+    niki
+    john
+    rahul
+    aish (ctrl+d to exit edit mode).
+17. Show the last 10 lines of 'myfile'.
+Ans: $tail -n 10 myfile
+18. What are the first 3 lines of 'myfile'.
+Ans: $head -n 3 myfile
+19. What are the last 2 lines of 'myfile'.
+Ans: $tail -n 2 myfile
+20. Check whether the word 'hello' is present in 'myfile' or not?.
+Ans: $grep -c hello myfile
+21. How many characters are present in the file 'myfile'?.
+Ans: $wc -m myfile
+22. How many lines, words, characters are present in the file 'myfile'?
+Ans: $wc -m myfile (counts the characters)
+     $wc -w myfile (counts the words)
+     $wc -l myfile (counts the lines)
+23. Make another two files in your own folder. Filename should be 'bat' and 'ball'.
+Ans: $touch bat 
+     $touch ball
+24. Copy the contents of 'myfile' to 'bat'.
+Ans: $cp myfile bat
+25. Move the contents of 'bat' to 'ball'.
+Ans: $mv bat ball
+26. Now show the contents of the 3 files-----'myfile', 'bat' and 'ball'.
+Ans: $cat myfile
+     $cat bat
+     $cat ball
+27. Calculate 95+108, 108-90, 90*10, 700/10.
+Ans: $bc
+     95+108
+     108-90
+     90*10
+     700/10
+28. Knowing the machine name
+Ans: $uname
+29. Append new lines to a file.
+Ans: cat>> filename (ctrl+d to save and exit)

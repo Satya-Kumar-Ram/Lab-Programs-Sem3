@@ -26,4 +26,15 @@
 23. Write a program to delete node at beginning of the Circular Singly Linked List.<br>
 24. Write a program to delete node at end of the Circular Singly Linked List.<br>
 25. Write a program to delete node at particular position of the Circular Singly Linked List.<br>
+26. Write a program to implement Stacks using Array.<br>
+27. Write a program to implement Stacks using Linked List.<br>
+28. Write a program to implement Queue using Array.<br>
+29. Write a program to implement Queue using Linked List.<br>
+30. Write a program to implement Circular Queue using Array.<br>
+31. Write a program to implement Circular Queue using Linked List.<br>
+32. Write a program to perform bubble sort.<br>
+33. Write a program to perform insertion sort.<br>
+34. Write a program to perform selection sort.<br>
+35. Write a program to perform binary search.<br>
+36. Write a program to perform linear search.<br>
 </p>
